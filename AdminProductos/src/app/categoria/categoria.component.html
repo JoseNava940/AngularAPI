@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="card border-info mb-3">
+        <div class="card-header text-primary">
+            <h2 class="text-center">
+                {{ titulo }}
+            </h2>
+        </div>
+        <div class="card-body text-primary table-responsive">
+            <form action="">
+                <div class="mb-3">
+                    <label for="nombre">
+                        Nombre de la categoria
+                    </label>
+                    <input type="text" class="form-control" name="nombre" required [(ngModel)]="categoria.nombreCategoria">
+                </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">
+                        Descripción de la categoría
+                    </label>
+                    <input type="text" class="form-control" name="descripcion" required [(ngModel)]="categoria.descripcionCategoria">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-outline-primary form-control" (click)="almacenarCategoria()">
+                        Ok
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
