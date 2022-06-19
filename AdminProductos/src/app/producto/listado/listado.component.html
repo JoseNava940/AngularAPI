@@ -1,0 +1,125 @@
+<div class="mb-3"></div>
+<div class="container">
+    <div class="card border-success mb-3">
+        <div class="card-header text-danger">
+            <h2 class="text-center">
+                {{ titulo }}
+            </h2>
+        </div>
+        <div class="card-body text-primary table-responsive">
+            <div class="my-2 text-left">
+                <button class="btn btn-outline-primary" type="button" routerLink="/productos">
+                    <i class="fa-solid fa-layer-group"></i>
+                    Registrar productos
+                </button>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Existencia</th>
+                        <th>Precio</th>
+                        <th>Id Categoria</th>
+                        <th>Fecha Creación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of listaProductos">
+                        <td>{{producto.idProducto}}</td>
+                        <td>{{producto.nombreProducto}}</td>
+                        <td>{{producto.descripcionProducto}}</td>
+                        <td>{{producto.existencia}}</td>
+                        <td>{{producto.precioProducto}}</td>
+                        <td>{{producto.idCategoria.idCategoria}}</td>
+                        <td>{{producto.fechaCreacion}}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-success btn-sm" class="btn btn-outline-success"
+                                data-toggle="modal" data-target="#exampleModal" (click)="AsignarId(producto.idProducto)">
+                                <i class="fa-solid fa-pen-to-square"></i> Actualizar
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" name="eliminar" class="btn btn-outline-danger btn-sm"
+                                (click)="eliminar(producto)">
+                                <i class="fa-solid fa-trash-can"></i> Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Editar </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <form>
+                        <div class="form-group">
+                            <label> Nombre del Producto </label>
+                            <input type="text" class="form-control" name="nombre" required
+                                [(ngModel)]="producto.nombreProducto" />
+                        </div>
+        
+                        <div class="form-group">
+                            <label> Descripcion del Producto </label>
+                            <input type="text" class="form-control" name="producto" required
+                                [(ngModel)]="producto.descripcionProducto" />
+                        </div>
+        
+                        <div class="form-group">
+                            <label> Categoria que pertenece</label>
+                            <select id="categoriaSelect" class="form-control" name="categoriaSelect" required
+                                [(ngModel)]="idCategoria">
+                                <option value="0">Inserta la categoria</option>
+                                <option *ngFor="let categoria of listaDeCategorias"
+                                    value="{{categoria.idCategoria}}"
+                                >{{ categoria.nombreCategoria }}</option>
+                            </select>
+                        </div>
+        
+                        <div class="form-group">
+                            <label> Precio del Producto </label>
+                            <input type="text" class="form-control" name="precio" required
+                                [(ngModel)]="producto.precioProducto" />
+                        </div>
+        
+                        <div class="form-group">
+                            <label> Existencia del producto </label>
+                            <input type="text" class="form-control" name="existencia" required
+                                [(ngModel)]="producto.existencia" />
+                        </div>
+        
+                        <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-dismiss="modal"
+                            >
+                              Cerrar
+                            </button>
+                            <button type="button"  class="btn btn-outline-success" data-dismiss="modal" (click)="actualizar(producto)">
+                              Actualizar
+                            </button>
+                          
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -3,3 +3,9 @@ export class Categoria {
     nombreCategoria : string = '';
     descripcionCategoria : string = '';
 }
+
+export class CategoriaUpdate {
+    idCategoriaupdate : number = 0;
+    nombreCategoriaupdate : string = '';
+    descripcionCategoriaupdate : string = '';
+}

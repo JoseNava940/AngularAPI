@@ -1,27 +1,27 @@
 <div class="container">
     <div class="card border-info mb-3">
-        <div class="card-header text-primary">
+        <div class="card-header text-danger">
             <h2 class="text-center">
                 {{ titulo }}
             </h2>
         </div>
-        <div class="card-body text-primary table-responsive">
-            <form action="">
-                <div class="mb-3">
-                    <label for="nombre">
-                        Nombre de la categoria
-                    </label>
-                    <input type="text" class="form-control" name="nombre" required [(ngModel)]="categoria.nombreCategoria">
+        <div class="card-body text-dark table-responsive">
+            <form>
+                <div class="mb-3 mt-5">
+                    <label> Nombre de la Categoría </label>
+                    <input type="text" class="form-control" name="nombre" required
+                        [(ngModel)]="categoria.nombreCategoria" />
                 </div>
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label">
-                        Descripción de la categoría
-                    </label>
-                    <input type="text" class="form-control" name="descripcion" required [(ngModel)]="categoria.descripcionCategoria">
+
+                <div class="mb-3 mt-5">
+                    <label> Descripcion de la Categoría </label>
+                    <input type="text" class="form-control" name="categoria" required
+                        [(ngModel)]="categoria.descripcionCategoria" />
                 </div>
-                <div class="mb-3">
-                    <button class="btn btn-outline-primary form-control" (click)="almacenarCategoria()">
-                        Ok
+
+                <div class="mb-3 mt-5">
+                    <button class="btn btn-outline-success form-control" (click)="almacenarCategoria(categoria)">
+                        Insertar
                     </button>
                 </div>
             </form>

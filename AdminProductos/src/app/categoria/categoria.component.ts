@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Categoria } from '../modelo/categoria';
+import { Categoria, CategoriaUpdate } from 'src/app/modelo/categoria';
+import { CategoriaService } from 'src/app/servicios/categoria.service';
 
 @Component({
   selector: 'app-categoria',
@@ -9,15 +11,25 @@ import { Categoria } from '../modelo/categoria';
 })
 export class CategoriaComponent implements OnInit {
 
-  titulo : string = "Titulo de la tarjeta";
-  categoria : Categoria = new Categoria();
-  constructor() { }
+  titulo: string = 'Listado de categorías';
+  categoria: Categoria = new Categoria();
+
+  constructor(
+    private servicio: CategoriaService, 
+    private router: Router) {}
 
   ngOnInit(): void {
   }
 
-  almacenarCategoria() : void{
-    Swal.fire('Categoría almacenada satisfactoriamente','La categoría se almacenó', 'success');
+  almacenarCategoria(categoria: Categoria): void {
+    this.servicio.crearCategoria(categoria).subscribe(result => {
+        Swal.fire(
+          'Administración de Productos',
+          'La categoria se almacenó',
+          'success')
+        this.router.navigate(["/listado"]);
+      }
+    );
   }
 
 }
