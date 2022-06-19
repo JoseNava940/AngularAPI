@@ -32,7 +32,7 @@ export class ListadoComponent implements OnInit {
           'success'
         ).then(
           (result) =>{
-            window.location.reload();
+            
           }
         );
       }
