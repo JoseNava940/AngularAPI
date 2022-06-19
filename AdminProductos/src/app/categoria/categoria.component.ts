@@ -27,7 +27,7 @@ export class CategoriaComponent implements OnInit {
           'Administración de Productos',
           'La categoria se almacenó',
           'success')
-        this.router.navigate(["/listado"]);
+        this.router.navigate(["/listadoCategorias"]);
       }
     );
   }
